@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<title>Paolos TK</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Paolos TK: roots reggae with Ethiopian and Eritrean soul, from Eugene, Oregon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Figtree:wght@400;500;600;700&family=Noto+Serif+Ethiopic:wght@600&display=swap" rel="stylesheet">
+<style>
+/* Concept: a record you can play. The hero is a spinning LP whose centre label is
+   Paolos's face; tapping it starts the music. The songs sit below as the back of the
+   sleeve (Side A / Side B) with a live sound-system visualiser. Woven tibeb borders
+   (habesha kemis trim) mark the sections; red-gold-green appears only in the weave. */
+:root{
+  --bg:#170b08; --surface:#22110d; --surface-2:#2e1812; --line:#4a2a20;
+  --fg:#fbeedd; --muted:#c7a68c; --gold:#f2b134; --gold-ink:#241505;
+  --red:#d9452b; --green:#2e9a62;
+  --display:"Big Shoulders Display","Oswald","Arial Narrow",Impact,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --geez:"Noto Serif Ethiopic","Abyssinica SIL",serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:var(--gold);text-underline-offset:3px}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:900;line-height:.9;text-transform:uppercase;margin:0;text-wrap:balance;letter-spacing:.005em}
+p{margin:0}
+.eyebrow{font:700 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+
+/* tibeb weave */
+.tibeb{height:22px;border-block:1px solid var(--line);background:
+  repeating-linear-gradient(135deg,transparent 0 6px,var(--red) 6px 8px,transparent 8px 14px),
+  repeating-linear-gradient(45deg,transparent 0 6px,var(--gold) 6px 8px,transparent 8px 14px),
+  linear-gradient(var(--green),var(--green)) 0 50%/100% 3px no-repeat,var(--bg)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:12px}
+.brand{font-family:var(--display);font-weight:900;font-size:26px;text-transform:uppercase;color:var(--fg);text-decoration:none;display:flex;gap:10px;align-items:baseline}
+.brand span{font-family:var(--geez);font-size:15px;color:var(--muted);text-transform:none}
+.top nav{display:flex;gap:22px;flex-wrap:wrap}
+.top nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.top nav a:hover{color:var(--fg)}
+@media (max-width:700px){.top nav{display:none}}
+
+/* hero */
+.hero{padding-block:48px 56px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center}
+.hero h1{font-size:clamp(80px,11.5vw,176px);line-height:.82}
+.hero h1 .tk{color:var(--gold);display:block}
+.hero .geez{font-family:var(--geez);color:var(--muted);font-size:19px;margin-top:18px}
+.hero .lede{font-size:21px;line-height:1.45;margin-top:18px;max-width:30ch}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 24px;font-weight:700;font-size:15px;text-decoration:none;cursor:pointer;border:2px solid var(--gold)}
+.btn.solid{background:var(--gold);color:var(--gold-ink)}
+.btn.ghost{background:none;color:var(--gold)}
+.btn svg{width:16px;height:16px;fill:currentColor}
+
+/* the record */
+.deck{position:relative;justify-self:center;width:100%;max-width:520px;aspect-ratio:1}
+.sleeve{position:absolute;inset:6% 22% 6% 0;border-radius:6px;background:linear-gradient(160deg,#3a1a12,#1e0d09);border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.45);overflow:hidden}
+.sleeve::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;border-top:1px solid var(--line);background:
+  repeating-linear-gradient(135deg,transparent 0 6px,var(--red) 6px 8px,transparent 8px 14px),
+  repeating-linear-gradient(45deg,transparent 0 6px,var(--gold) 6px 8px,transparent 8px 14px),
+  linear-gradient(var(--green),var(--green)) 0 50%/100% 3px no-repeat,#1e0d09}
+.sleeve .s-title{position:absolute;left:22px;top:20px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3.6vw,38px);line-height:.88}
+.sleeve .s-sub{position:absolute;left:22px;bottom:38px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);max-width:40%}
+.vinyl-wrap{position:absolute;top:8%;right:0;width:84%;aspect-ratio:1}
+.vinyl{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;border:0;padding:0;cursor:pointer;
+  background:repeating-radial-gradient(circle,#111 0 1.2px,#1b1b1b 1.6px 3.4px);
+  box-shadow:0 20px 50px rgba(0,0,0,.5),inset 0 0 0 10px #0d0d0d}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 40deg,rgba(255,255,255,.07) 55deg,transparent 70deg 210deg,rgba(255,255,255,.05) 225deg,transparent 240deg)}
+.label{position:absolute;inset:30%;border-radius:50%;overflow:hidden;border:5px solid var(--gold);background:var(--gold)}
+.label img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.label::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 2px var(--gold)}
+.spin{animation:spin 3.6s linear infinite}
+.spin.paused{animation-play-state:paused}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.deck{max-width:440px}}
+
+/* new album announcement */
+.news{background:var(--red);color:var(--fg);padding-block:56px;position:relative;overflow:hidden}
+.news::before{content:"NEW ALBUM · NEW ALBUM · NEW ALBUM · NEW ALBUM · NEW ALBUM · NEW ALBUM ·";position:absolute;left:-2%;top:50%;transform:translateY(-50%) rotate(-4deg);white-space:nowrap;font-family:var(--display);font-weight:900;font-size:clamp(90px,16vw,220px);line-height:1;color:rgba(0,0,0,.12);pointer-events:none}
+.news .wrap{position:relative;display:grid;gap:18px}
+.live{display:inline-flex;align-items:center;gap:10px;background:var(--gold-ink);color:var(--gold);border-radius:999px;padding:8px 16px;font:800 13px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;width:max-content;max-width:100%}
+.live i{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(217,69,43,.7);animation:pulse 1.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(217,69,43,0)}100%{box-shadow:0 0 0 0 rgba(217,69,43,0)}}
+@media (prefers-reduced-motion:reduce){.live i{animation:none}}
+.news h2{font-size:clamp(64px,11vw,150px);line-height:.85;color:var(--fg)}
+.news h2 span{color:var(--gold)}
+.news p{font-size:clamp(19px,2.2vw,24px);font-weight:600;max-width:38ch;line-height:1.4}
+.news .btn{width:max-content;max-width:100%;background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+
+/* sound system */
+section{padding-block:76px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.sec-head h2{font-size:clamp(52px,8vw,104px)}
+.sound{background:var(--surface);border-block:1px solid var(--line)}
+.viz{height:120px;width:100%;display:block;border-radius:10px;background:var(--bg);border:1px solid var(--line);margin-bottom:28px;max-width:100%}
+.sides{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.side h3{font-size:30px;display:flex;align-items:baseline;gap:12px;padding-bottom:10px;border-bottom:2px solid var(--gold)}
+.side h3 small{font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.14em;color:var(--muted)}
+.side ol{list-style:none;margin:0;padding:0}
+.trk{width:100%;display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);padding:14px 6px;text-align:left;cursor:pointer}
+.trk:hover{background:var(--surface-2)}
+.trk .no{font-family:var(--display);font-weight:900;font-size:26px;color:var(--muted);font-variant-numeric:tabular-nums}
+.trk .nm{font-weight:700;font-size:17px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trk .tm{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+.trk[aria-current="true"]{background:var(--surface-2)}
+.trk[aria-current="true"] .no{color:var(--gold)}
+.eq{display:none;gap:2px;align-items:end;height:14px;margin-left:10px;vertical-align:middle}
+.trk[aria-current="true"] .eq{display:inline-flex}
+.eq i{width:3px;background:var(--gold);height:30%}
+.playing .trk[aria-current="true"] .eq i{animation:eq .9s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:-.3s!important}.eq i:nth-child(3){animation-delay:-.6s!important}
+@keyframes eq{0%,100%{height:25%}50%{height:100%}}
+@media (max-width:760px){.sides{grid-template-columns:1fr}}
+.crate{margin-top:48px}
+.crate h3{font-size:30px;padding-bottom:10px;border-bottom:2px solid var(--gold);margin-bottom:18px}
+.crate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rec{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);text-decoration:none;color:var(--fg);min-width:0}
+a.rec:hover{border-color:var(--gold)}
+.rec .disc{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle,var(--c) 0 13px,var(--bg) 13.5px 15px,transparent 15.5px),repeating-radial-gradient(circle,#111 0 1px,#1c1c1c 1.4px 3px)}
+.rec .yr{font:700 12px/1 var(--body);letter-spacing:.16em;color:var(--muted)}
+.rec .ti{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:26px;line-height:1;margin-top:6px}
+.rec .go{font-size:14px;font-weight:700;color:var(--gold);margin-top:6px}
+.rec.soon .go{color:var(--muted)}
+@media (max-width:900px){.crate-grid{grid-template-columns:1fr}}
+
+/* story */
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.story .prose{display:grid;gap:18px;max-width:60ch;min-width:0}
+.story .big{font-size:23px;line-height:1.4}
+.story figure{margin:0;min-width:0}
+.story img{width:100%;height:auto;display:block;border-radius:8px;filter:sepia(.3) contrast(1.05);max-width:100%}
+.story img.bio-photo{max-width:340px;filter:none;border:6px solid var(--gold);border-radius:14px;box-shadow:14px 14px 0 var(--red)}
+.story figure:has(.bio-photo){justify-self:center}
+figcaption{font-size:13px;color:var(--muted);margin-top:10px}
+@media (max-width:900px){.story .wrap{grid-template-columns:1fr}}
+
+/* discography: a left-to-right timeline */
+.disco{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--gold)}
+.rel{padding:20px 18px 22px;border-right:1px solid var(--line);min-width:0}
+.rel:first-child{padding-left:0}
+.rel:last-child{border-right:0}
+.rel .y{font-family:var(--display);font-weight:900;font-size:56px;line-height:1;color:var(--gold)}
+.rel .n{font-weight:700;font-size:18px;margin-top:10px}
+.rel .m{font-size:14px;color:var(--muted);margin-top:4px}
+@media (max-width:900px){.disco{grid-template-columns:1fr 1fr}.rel{border-right:0;border-bottom:1px solid var(--line);padding-left:0}}
+@media (max-width:480px){.disco{grid-template-columns:1fr}}
+
+/* stage */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:18px;margin-bottom:48px}
+.marquee .row{display:flex;gap:44px;width:max-content;animation:roll 40s linear infinite;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(34px,5vw,60px);line-height:1}
+.marquee .row span:nth-child(odd){color:var(--fg)}
+.marquee .row span:nth-child(even){color:transparent;-webkit-text-stroke:1.5px var(--gold)}
+@keyframes roll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee .row{animation:none;flex-wrap:wrap;width:auto;padding-inline:16px}}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.photos figure{margin:0;min-width:0}
+.photos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;display:block;max-width:100%}
+.photos strong{display:block;color:var(--fg);font-size:15px}
+@media (max-width:860px){.photos{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.photos{grid-template-columns:1fr}}
+
+/* booking */
+.booking{background:var(--gold);color:var(--gold-ink)}
+.booking .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.booking h2{font-size:clamp(56px,9vw,120px)}
+.booking .eyebrow{color:var(--gold-ink)}
+.booking p.sub{margin-top:14px;font-size:18px;max-width:40ch}
+.cards{display:grid;gap:12px}
+.cardc{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--gold-ink);color:var(--fg);border-radius:12px;padding:16px 18px;min-width:0}
+.cardc .k{font:700 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cardc .v{font-weight:700;font-size:19px;margin-top:6px;word-break:break-all;user-select:all}
+.copy{background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;flex:none}
+.epk{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--fg);color:var(--gold-ink);border-radius:12px;padding:16px 18px;min-width:0}
+.epk .k{font:700 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+.epk .v{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:26px;line-height:1;margin-top:6px}
+.epk .dl{display:inline-flex;align-items:center;gap:8px;background:var(--gold-ink);color:var(--gold);border:0;border-radius:999px;padding:11px 18px;font-weight:800;font-size:14px;cursor:pointer;text-decoration:none;flex:none}
+.epk .dl svg{width:16px;height:16px;fill:currentColor}
+.epk-msg{font-size:13px;margin-top:4px;min-height:1em}
+@media (max-width:900px){.booking .wrap{grid-template-columns:1fr}}
+
+footer{padding-block:30px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.social{display:flex;gap:10px;flex-wrap:wrap}
+.social a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--fg);text-decoration:none;font-weight:600;font-size:14px}
+.social a:hover{border-color:var(--gold)}
+.social svg{width:16px;height:16px;fill:currentColor}
+.booking .social a{border-color:rgba(36,21,5,.35);color:var(--gold-ink)}
+.booking .social{margin-top:22px}
+
+/* now-playing bar */
+.np{position:fixed;left:0;right:0;bottom:0;z-index:55;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.np .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto minmax(0,1.4fr);gap:16px;align-items:center;padding-block:12px}
+.np .mini{width:48px;height:48px;border-radius:50%;overflow:hidden;border:3px solid var(--gold)}
+.np .mini img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.np .meta{min-width:0}
+.np .t{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np .s{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ctrls{display:flex;gap:8px;align-items:center}
+.cb{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.cb.main{width:48px;height:48px;background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.cb svg{width:18px;height:18px;fill:currentColor}
+.prog{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:0}
+.prog input{flex:1;min-width:0;accent-color:var(--gold)}
+@media (max-width:700px){.np .wrap{grid-template-columns:minmax(0,1fr) auto;gap:10px}.np .mini{display:none}.np .prog{grid-column:1/-1}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Paolos TK <span lang="ti">ጳውሎስ</span></a>
+    <nav aria-label="Sections"><a href="#music">Music</a><a href="#story">Story</a><a href="#releases">Releases</a><a href="#stage">Stage</a><a href="#booking">Booking</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Roots reggae · Eugene, Oregon · since 1991</div>
+        <h1 style="margin-top:16px">Paolos <span class="tk">TK</span></h1>
+        <div class="geez" lang="ti">ፍቕሪ · ሓርነት · ተስፋ</div>
+        <p class="lede">Roots reggae with Ethiopian and Eritrean soul. Songs of love, liberty and hope.</p>
+        <div class="cta">
+          <button class="btn solid" id="heroPlay" type="button"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>Play the music</button>
+          <a class="btn ghost" href="#booking">Book a show</a>
+        </div>
+      </div>
+      <div class="deck">
+        <div class="sleeve" aria-hidden="true"><div class="s-title">Paolos<br>TK</div><div class="s-sub">Roots · Reggae · Habesha soul</div></div>
+        <div class="vinyl-wrap">
+          <button class="vinyl spin paused" id="vinyl" type="button" aria-label="Play the record">
+            <span class="label"><img src="img/paolos-bio.jpg" alt=""></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="news" id="new-album" aria-label="New album">
+    <div class="wrap">
+      <span class="live"><i aria-hidden="true"></i>In the studio now</span>
+      <h2>New reggae album <span>coming</span></h2>
+      <p>Paolos TK is in the studio on a brand-new reggae album with some big names in the industry. Be on the lookout.</p>
+      <a class="btn" href="https://docs.google.com/forms/d/1eldClI0s8yGDEWjvwZnuf0gezdd4TURznubzaSD3KFI/viewform" target="_blank" rel="noopener">Hear it first: join the list &rarr;</a>
+    </div>
+  </section>
+
+  <div class="tibeb" aria-hidden="true"></div>
+
+  <section class="sound" id="music">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="eyebrow">Sound system</div><h2 style="margin-top:10px">Drop the needle</h2></div></div>
+      <canvas class="viz" id="viz" aria-hidden="true"></canvas>
+      <div class="sides">
+        <div class="side"><h3>Side A <small>Tracks 1–5</small></h3><ol id="sideA"></ol></div>
+        <div class="side"><h3>Side B <small>Tracks 6–10</small></h3><ol id="sideB"></ol></div>
+      </div>
+      <div class="crate">
+        <h3>More from the crate</h3>
+        <div class="crate-grid">
+          <a class="rec" href="https://open.spotify.com/artist/0iLUO2jPGk1HD2Xoz4Sy5S" target="_blank" rel="noopener"><span class="disc" style="--c:var(--green)" aria-hidden="true"></span><span><span class="yr">2016 · SINGLE</span><span class="ti" style="display:block">"Bella" ft. Al Pancho</span><span class="go" style="display:block">Play on Spotify &rarr;</span></span></a>
+          <a class="rec" href="https://soundcloud.com/zionsoundz" target="_blank" rel="noopener"><span class="disc" style="--c:var(--red)" aria-hidden="true"></span><span><span class="yr">1993 · BAND ALBUM</span><span class="ti" style="display:block">Zionsoundz</span><span class="go" style="display:block">Top track: "Babylon by the River" &rarr;</span></span></a>
+          <div class="rec soon"><span class="disc" style="--c:var(--gold)" aria-hidden="true"></span><span><span class="yr">1999 · SOLO ALBUM</span><span class="ti" style="display:block">Liberty</span><span class="go" style="display:block">Coming soon</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap">
+      <div class="prose">
+        <div class="eyebrow">The story</div>
+        <h2 style="font-size:clamp(52px,8vw,96px)">From refuge to riddim</h2>
+        <p class="big">Paolos TK blends the rhythms of Ethiopia and Eritrea with the heart of Jamaican reggae. His journey, from seeking refuge to building a new life in America, runs through every song.</p>
+        <p>He released his debut album, <em>Contagious Love</em>, in 1991. In the early '90s he was a founding member of Zionsoundz in Santa Cruz, California, alongside Miguel Migs, who went on to become an internationally known house music producer and DJ. The band recorded its album in 1993.</p>
+        <p>Solo albums <em>Liberty</em> (1999) and <em>Wounded Bear</em> (2004) followed, along with the 2016 single "Bella" featuring Al Pancho. Now based in Eugene, Oregon, Paolos TK is bringing new music, international collaborations and live shows to a new generation of roots fans.</p>
+      </div>
+      <figure>
+        <img class="bio-photo" src="img/paolos-bio.jpg" alt="Paolos TK smiling in a white cap" width="480" height="628" loading="lazy">
+        <figcaption>Paolos TK</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="tibeb" aria-hidden="true"></div>
+
+  <section id="releases">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="eyebrow">Discography</div><h2 style="margin-top:10px">Releases</h2></div></div>
+      <div class="disco">
+        <div class="rel"><div class="y">1991</div><div class="n">Contagious Love</div><div class="m">Debut solo album · coming online soon</div></div>
+        <div class="rel"><div class="y">1993</div><div class="n">Zionsoundz</div><div class="m">Band album with Miguel Migs · <a href="https://soundcloud.com/zionsoundz" target="_blank" rel="noopener">SoundCloud</a></div></div>
+        <div class="rel"><div class="y">1999</div><div class="n">Liberty</div><div class="m">Solo album · coming online soon</div></div>
+        <div class="rel"><div class="y">2004</div><div class="n">Wounded Bear</div><div class="m">Solo album, 10 tracks · <a href="https://paolostk.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a></div></div>
+        <div class="rel"><div class="y">2016</div><div class="n">"Bella" ft. Al Pancho</div><div class="m">Single · <a href="https://open.spotify.com/artist/0iLUO2jPGk1HD2Xoz4Sy5S" target="_blank" rel="noopener">Spotify</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stage" style="padding-top:20px">
+    <div class="marquee" aria-label="Opened for: Burning Spear, Buju Banton, Sizzla, Ziggy Marley, Julian Marley, Joe Higgs, The Abyssinians">
+      <div class="row" aria-hidden="true">
+        <span>Burning Spear</span><span>Buju Banton</span><span>Sizzla</span><span>Ziggy Marley</span><span>Julian Marley</span><span>Joe Higgs</span><span>The Abyssinians</span>
+        <span>Burning Spear</span><span>Buju Banton</span><span>Sizzla</span><span>Ziggy Marley</span><span>Julian Marley</span><span>Joe Higgs</span><span>The Abyssinians</span>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="sec-head"><div><div class="eyebrow">Shared the stage</div><h2 style="margin-top:10px">With the legends</h2></div></div>
+      <div class="photos">
+        <figure><img src="img/ziggy.jpg" alt="Paolos TK in a white headwrap beside Ziggy Marley in a white knit cap" loading="lazy" style="object-position:50% 40%"><figcaption><strong>Ziggy Marley</strong>Paolos opened for Ziggy in Santa Cruz, 1994</figcaption></figure>
+        <figure><img src="img/alborosie.jpg" alt="Paolos TK and Alborosie giving thumbs up backstage" loading="lazy"><figcaption><strong>Alborosie</strong>Backstage at The Get Down, Portland · Oct 20, 2026</figcaption></figure>
+        <figure><img src="img/hinds.jpg" alt="Paolos TK smiling in a selfie with David Hinds of Steel Pulse" loading="lazy"><figcaption><strong>David Hinds, Steel Pulse</strong>McDonald Theatre, Eugene · Oct 8, 2026</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="booking">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Booking</div>
+        <h2 style="margin-top:12px">Bring the roots to your stage</h2>
+        <p class="sub">Available for festivals, support slots and tours. Based in Eugene, Oregon.</p>
+        <a class="btn" style="margin-top:22px;background:var(--gold-ink);color:var(--gold);border-color:var(--gold-ink)" href="https://docs.google.com/forms/d/1eldClI0s8yGDEWjvwZnuf0gezdd4TURznubzaSD3KFI/viewform" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zm2 2v.5l7 4.5 7-4.5V7zm14 2.9-7 4.5-7-4.5V17h14z"/></svg>Join the list for new music</a>
+        <div class="social" aria-label="Follow"><a href="https://www.facebook.com/evcnews" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9H17l.5-4h-4V8.8c0-.5.3-.8.5-.8z"/></svg>Facebook</a><a href="https://www.instagram.com/evcnews" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3zm5 3.5A4.5 4.5 0 1112 16.5 4.5 4.5 0 0112 7.5zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 5.8a1 1 0 110 2 1 1 0 010-2z"/></svg>Instagram</a></div>
+      </div>
+      <div class="cards">
+        <div class="cardc"><div style="min-width:0"><div class="k">Email</div><div class="v" id="em">paolostk@gmail.com</div></div><button class="copy" type="button" data-copy="em">Copy</button></div>
+        <div class="cardc"><div style="min-width:0"><div class="k">Phone</div><div class="v" id="ph">(408) 770-6967</div></div><button class="copy" type="button" data-copy="ph">Copy</button></div>
+        <div class="epk"><div style="min-width:0"><div class="k">Press kit · PDF · 2 pages</div><div class="v">Electronic Press Kit</div><div class="epk-msg" id="epkMsg" aria-live="polite"></div></div><a class="dl" id="epkBtn" href="paolostk_EPK.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M11 3h2v10l3.5-3.5 1.4 1.4L12 16.8 6.1 10.9l1.4-1.4L11 13zM5 19h14v2H5z"/></svg>Download EPK</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© Paolos TK · Eugene, Oregon</span><span class="social"><a href="https://www.facebook.com/evcnews" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/evcnews" target="_blank" rel="noopener">Instagram</a><a href="https://open.spotify.com/artist/0iLUO2jPGk1HD2Xoz4Sy5S" target="_blank" rel="noopener">Spotify</a><a href="https://paolostk.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a></span><span lang="ti" style="font-family:var(--geez)">ፍቕሪ · ሓርነት · ተስፋ</span></div></footer>
+
+<div class="np" aria-label="Now playing">
+  <div class="wrap">
+    <div class="mini" aria-hidden="true"><img src="img/paolos-bio.jpg" alt=""></div>
+    <div class="meta"><div class="t" id="npT">Paolos TK</div><div class="s" id="npS">Press play to start</div></div>
+    <div class="ctrls">
+      <button class="cb" id="prev" type="button" aria-label="Previous song"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+      <button class="cb main" id="play" type="button" aria-label="Play"><svg viewBox="0 0 24 24" id="pi"><path d="M7 4v16l13-8z"/></svg></button>
+      <button class="cb" id="next" type="button" aria-label="Next song"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+    </div>
+    <div class="prog"><span id="cur">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span id="dur">0:00</span></div>
+  </div>
+</div>
+<audio id="audio" preload="metadata"></audio>
+
+<script>
+/* Song list, in play order. */
+const TRACKS = [
+  { title: "Liberty",              len: "5:08", src: "music/track01.mp3" },
+  { title: "Bella",                len: "4:52", src: "music/track02.mp3" },
+  { title: "One For Me",           len: "4:47", src: "music/track09.mp3" },
+  { title: "Wounded Bear",         len: "4:13", src: "music/track03.mp3" },
+  { title: "System of Corruption", len: "4:17", src: "music/track04.mp3" },
+  { title: "Guarda",               len: "4:56", src: "music/track05.mp3" },
+  { title: "Color Line",           len: "4:50", src: "music/track06.mp3" },
+  { title: "Abrhelley",            len: "4:32", src: "music/track07.mp3" },
+  { title: "Here I Am",            len: "4:44", src: "music/track08.mp3" },
+  { title: "Holy",                 len: "4:43", src: "music/track10.mp3" },
+];
+const $ = id => document.getElementById(id);
+const audio = $("audio"), vinyl = $("vinyl");
+let idx = -1, ctx = null, analyser = null, data = null;
+const fmt = s => !isFinite(s) ? "0:00" : Math.floor(s/60) + ":" + String(Math.floor(s%60)).padStart(2,"0");
+const PLAY='<path d="M7 4v16l13-8z"/>', PAUSE='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+
+TRACKS.forEach((t,i)=>{
+  const li=document.createElement("li");
+  li.innerHTML=`<button class="trk" type="button"><span class="no">${String(i+1).padStart(2,"0")}</span><span class="nm">${t.title}<span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></span><span class="tm">${t.len}</span></button>`;
+  li.firstElementChild.addEventListener("click",()=> i===idx ? toggle() : load(i,true));
+  (i<5?$("sideA"):$("sideB")).appendChild(li);
+});
+const btns=[...document.querySelectorAll(".trk")];
+
+function initAudioGraph(){
+  if (ctx) { if (ctx.state==="suspended") ctx.resume(); return; }
+  try{
+    ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const src=ctx.createMediaElementSource(audio);
+    analyser=ctx.createAnalyser(); analyser.fftSize=128;
+    src.connect(analyser); analyser.connect(ctx.destination);
+    data=new Uint8Array(analyser.frequencyBinCount);
+  }catch(e){ analyser=null; }
+}
+function load(i,play){
+  idx=(i+TRACKS.length)%TRACKS.length;
+  audio.src=TRACKS[idx].src;
+  $("npT").textContent=TRACKS[idx].title;
+  $("npS").textContent="Paolos TK · "+(idx<5?"Side A":"Side B");
+  btns.forEach((b,j)=>b.setAttribute("aria-current",j===idx));
+  if(play){ initAudioGraph(); audio.play().catch(()=>{}); }
+}
+function toggle(){ if(idx<0) return load(0,true); initAudioGraph(); audio.paused?audio.play().catch(()=>{}):audio.pause(); }
+$("play").onclick=toggle; $("heroPlay").onclick=toggle; vinyl.onclick=toggle;
+$("prev").onclick=()=>load(idx<0?0:idx-1,true); $("next").onclick=()=>load(idx+1,true);
+audio.addEventListener("play",()=>{document.body.classList.add("playing");vinyl.classList.remove("paused");$("pi").innerHTML=PAUSE;$("play").setAttribute("aria-label","Pause");vinyl.setAttribute("aria-label","Pause the record")});
+audio.addEventListener("pause",()=>{document.body.classList.remove("playing");vinyl.classList.add("paused");$("pi").innerHTML=PLAY;$("play").setAttribute("aria-label","Play");vinyl.setAttribute("aria-label","Play the record")});
+audio.addEventListener("loadedmetadata",()=>{$("dur").textContent=fmt(audio.duration)});
+audio.addEventListener("timeupdate",()=>{$("cur").textContent=fmt(audio.currentTime);if(audio.duration)$("seek").value=audio.currentTime/audio.duration*1000});
+audio.addEventListener("ended",()=>load(idx+1,true));
+$("seek").addEventListener("input",e=>{if(audio.duration)audio.currentTime=e.target.value/1000*audio.duration});
+
+/* sound-system visualiser: live when playing, a slow idle wave otherwise */
+const cv=$("viz"), g=cv.getContext("2d");
+const root=getComputedStyle(document.documentElement);
+const cols=["--green","--gold","--red"].map(n=>root.getPropertyValue(n).trim());
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function draw(){
+  const w=cv.clientWidth, h=cv.clientHeight, dpr=window.devicePixelRatio||1;
+  if(w && cv.width!==Math.round(w*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);}
+  g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,w,h);
+  const n=Math.max(16,Math.min(64,Math.floor(w/18))), gap=4, bw=(w-gap*(n-1))/n, t=performance.now()/1000;
+  const live = analyser && !audio.paused;
+  if(live) analyser.getByteFrequencyData(data);
+  for(let i=0;i<n;i++){
+    const v = live ? data[Math.floor(i/n*data.length*.8)]/255 : .1+.07*Math.sin((reduce?0:t*1.4)+i*.45);
+    const bh=Math.max(3,v*(h-16));
+    g.fillStyle=cols[Math.min(2,Math.floor(i/n*3))];
+    g.fillRect(i*(bw+gap),(h-bh)/2,bw,bh);
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+/* EPK download: uses the viewer's save prompt when available, otherwise the link opens the PDF */
+(async()=>{
+  const dl = window.claude?.use ? await window.claude.use("downloads") : null;
+  if(!dl) return;
+  const btn=$("epkBtn"), msg=$("epkMsg");
+  btn.addEventListener("click", async e=>{
+    e.preventDefault(); msg.textContent="";
+    try{
+      const r=await fetch("paolostk_EPK.pdf"); if(!r.ok) throw new Error("fetch");
+      await dl.save({filename:"Paolos_TK_EPK.pdf", data: await r.blob()});
+      msg.textContent="Saved.";
+    }catch(err){
+      if(err && err.code==="declined") return;
+      msg.textContent="Couldn't save here. Opening the PDF instead.";
+      window.open("paolostk_EPK.pdf","_blank","noopener");
+    }
+  });
+})();
+
+document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",()=>{
+  const el=$(b.dataset.copy), txt=el.textContent;
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected";setTimeout(()=>b.textContent="Copy",1500)};
+  try{navigator.clipboard.writeText(txt).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1500)},sel)}catch(e){sel()}
+}));
+</script>
+
+</body>
+</html>
