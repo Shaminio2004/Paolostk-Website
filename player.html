@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paolos TK Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Figtree:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#170b08;--plinth:#2a140e;--plinth-2:#3a1c13;--line:#4a2a20;
+  --fg:#fbeedd;--muted:#c7a68c;--gold:#f2b134;--ink:#241505;--red:#d9452b;--green:#2e9a62;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:500 15px/1.4 var(--body)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.player{max-width:860px;margin:0 auto;padding:16px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:22px;align-items:center}
+@media (max-width:640px){.player{grid-template-columns:1fr;gap:16px}}
+
+/* turntable */
+.deck{position:relative;aspect-ratio:1.12;border-radius:18px;padding:6%;
+  background:linear-gradient(145deg,var(--plinth-2),var(--plinth) 60%,#1d0e0a);
+  box-shadow:0 18px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);border:1px solid var(--line)}
+.deck::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;border-radius:0 0 18px 18px;background:
+  repeating-linear-gradient(135deg,transparent 0 6px,var(--red) 6px 8px,transparent 8px 14px),
+  repeating-linear-gradient(45deg,transparent 0 6px,var(--gold) 6px 8px,transparent 8px 14px),
+  linear-gradient(var(--green),var(--green)) 0 50%/100% 2px no-repeat,#1d0e0a}
+.platter{position:absolute;left:6%;top:7%;width:72%;aspect-ratio:1;border-radius:50%;background:#0b0b0b;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 0 6px #121212}
+.vinyl{position:absolute;inset:2%;border-radius:50%;cursor:pointer;border:0;padding:0;
+  background:repeating-radial-gradient(circle,#111 0 1.3px,#1c1c1c 1.7px 3.4px)}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 40deg,rgba(255,255,255,.08) 55deg,transparent 70deg 210deg,rgba(255,255,255,.06) 225deg,transparent 240deg);pointer-events:none}
+.spin{animation:spin 1.8s linear infinite;animation-play-state:paused}
+.playing .spin{animation-play-state:running}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+.label{position:absolute;inset:31%;border-radius:50%;overflow:hidden;background:var(--gold);box-shadow:0 0 0 4px var(--red) inset;display:grid;place-items:center;text-align:center}
+.label img{width:100%;height:100%;object-fit:cover;display:block}
+.label .t{font-family:var(--display);font-weight:900;text-transform:uppercase;color:var(--ink);line-height:.85;font-size:clamp(14px,3.4vw,26px)}
+.label .t b{display:block;color:var(--red);font-size:1.5em}
+.label::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 2px var(--gold)}
+/* tonearm */
+.arm{position:absolute;right:9%;top:9%;width:7%;aspect-ratio:1;transform-origin:50% 50%;transform:rotate(-8deg);transition:transform .9s cubic-bezier(.3,.7,.2,1);z-index:2}
+.playing .arm{transform:rotate(22deg)}
+.arm .base{position:absolute;inset:-40%;border-radius:50%;background:radial-gradient(circle,#c9c3b8 0 30%,#6d665d 31% 45%,#2b2622 46%);box-shadow:0 3px 8px rgba(0,0,0,.6)}
+.arm .rod{position:absolute;left:50%;top:50%;width:6px;margin-left:-3px;height:520%;border-radius:3px;background:linear-gradient(90deg,#8d877d,#e7e2d8,#8d877d);transform-origin:50% 0}
+.arm .head{position:absolute;left:50%;top:calc(50% + 520% - 6px);width:22px;height:34px;margin-left:-11px;border-radius:4px;background:linear-gradient(#2b2622,#141110);border-top:3px solid var(--gold);transform:rotate(-24deg)}
+.knob{position:absolute;right:8%;bottom:14%;width:9%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e9dfcf,#8b7f70 60%,#3d362f);box-shadow:0 3px 6px rgba(0,0,0,.5)}
+.led{position:absolute;right:21%;bottom:17%;width:9px;height:9px;border-radius:50%;background:#3a1c13;box-shadow:inset 0 0 0 1px #000}
+.playing .led{background:var(--green);box-shadow:0 0 10px var(--green)}
+
+/* side panel */
+.panel{min-width:0}
+.eyebrow{font:700 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.now{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,5vw,44px);line-height:.92;margin:8px 0 4px;min-height:1em;overflow-wrap:anywhere}
+.sub{color:var(--muted);font-size:13px;min-height:1.2em}
+.ctrls{display:flex;align-items:center;gap:10px;margin:14px 0 10px}
+.cb{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--plinth-2);display:grid;place-items:center;cursor:pointer}
+.cb.main{width:54px;height:54px;background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.cb svg{width:18px;height:18px;fill:currentColor}
+.prog{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.prog input{flex:1;min-width:0;accent-color:var(--gold)}
+ol{list-style:none;margin:12px 0 0;padding:0;border-top:2px solid var(--gold)}
+.trk{width:100%;display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 4px;background:none;border:0;border-bottom:1px solid var(--line);text-align:left;cursor:pointer}
+.trk:hover{background:var(--plinth)}
+.trk .no{font-family:var(--display);font-weight:900;font-size:20px;color:var(--muted)}
+.trk .nm{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trk .nm small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.trk .tm{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.trk[aria-current="true"]{background:var(--plinth)}
+.trk[aria-current="true"] .no{color:var(--gold)}
+.foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--muted)}
+.foot a{color:var(--gold);text-decoration:none;font-weight:700}
+</style>
+</head>
+<body>
+<div class="player" id="player">
+  <div class="deck">
+    <div class="platter">
+      <button class="vinyl spin" id="vinyl" type="button" aria-label="Play">
+        <span class="label" id="label"></span>
+      </button>
+    </div>
+    <div class="arm" aria-hidden="true"><div class="base"></div><div class="rod"></div><div class="head"></div></div>
+    <div class="led" aria-hidden="true"></div>
+    <div class="knob" aria-hidden="true"></div>
+  </div>
+  <div class="panel">
+    <div class="eyebrow">Paolos TK · 90-second previews</div>
+    <div class="now" id="now">Drop the needle</div>
+    <div class="sub" id="sub">Tap the record or a song to play</div>
+    <div class="ctrls">
+      <button class="cb" id="prev" type="button" aria-label="Previous song"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+      <button class="cb main" id="play" type="button" aria-label="Play"><svg viewBox="0 0 24 24" id="pi"><path d="M7 4v16l13-8z"/></svg></button>
+      <button class="cb" id="next" type="button" aria-label="Next song"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+    </div>
+    <div class="prog"><span id="cur">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span id="dur">1:30</span></div>
+    <ol id="list"></ol>
+    <div class="foot"><span>Full songs:</span><span><a href="https://open.spotify.com/track/67mXDls9kTYTomc8NEEhe0" target="_blank" rel="noopener">Spotify</a> · <a href="https://paolostk.bandcamp.com/album/wounded-bear" target="_blank" rel="noopener">Bandcamp</a> · <a href="https://www.paolostk.com" target="_blank" rel="noopener">paolostk.com</a></span></div>
+  </div>
+</div>
+<audio id="audio" preload="none" controlslist="nodownload"></audio>
+<script>
+const TRACKS = [
+  { title:"Bella",                sub:"Bella · with Al Pancho (2016)", src:"music/track02.mp3", cover:"img/bella-cover.jpg" },
+  { title:"One for Me",           sub:"Bella · with Al Pancho (2016)", src:"music/track09.mp3", cover:"img/bella-cover.jpg" },
+  { title:"Liberty",              sub:"Paolos TK",                      src:"music/track01.mp3" },
+  { title:"Wounded Bear",         sub:"Wounded Bear (2004)",            src:"music/track03.mp3" },
+  { title:"System of Corruption", sub:"Paolos TK",                      src:"music/track04.mp3" },
+  { title:"Guarda",               sub:"Paolos TK",                      src:"music/track05.mp3" },
+];
+const $=id=>document.getElementById(id), audio=$("audio"), player=$("player");
+const fmt=s=>!isFinite(s)?"0:00":Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
+const PLAY='<path d="M7 4v16l13-8z"/>', PAUSE='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+let idx=-1;
+TRACKS.forEach((t,i)=>{
+  const li=document.createElement("li");
+  li.innerHTML=`<button class="trk" type="button"><span class="no">${i+1}</span><span class="nm"></span><span class="tm">1:30</span></button>`;
+  const nm=li.querySelector(".nm"); nm.textContent=t.title; const s=document.createElement("small"); s.textContent=t.sub; nm.appendChild(s);
+  li.firstElementChild.addEventListener("click",()=> i===idx ? toggle() : load(i,true));
+  $("list").appendChild(li);
+});
+const btns=[...document.querySelectorAll(".trk")];
+function setLabel(t){
+  const l=$("label"); l.textContent="";
+  if(t && t.cover){ const im=new Image(); im.src=t.cover; im.alt=""; l.appendChild(im); }
+  else { const d=document.createElement("div"); d.className="t"; d.innerHTML="Paolos<b>TK</b>"; l.appendChild(d); }
+}
+function load(i,play){
+  idx=(i+TRACKS.length)%TRACKS.length; const t=TRACKS[idx];
+  audio.src=t.src; $("now").textContent=t.title; $("sub").textContent=t.sub; setLabel(t);
+  btns.forEach((b,j)=>b.setAttribute("aria-current",j===idx));
+  if(play) audio.play().catch(()=>{});
+}
+function toggle(){ if(idx<0) return load(0,true); audio.paused?audio.play().catch(()=>{}):audio.pause(); }
+$("play").onclick=toggle; $("vinyl").onclick=toggle;
+$("prev").onclick=()=>load(idx<0?0:idx-1,true); $("next").onclick=()=>load(idx+1,true);
+audio.addEventListener("play",()=>{player.classList.add("playing");$("pi").innerHTML=PAUSE;$("play").setAttribute("aria-label","Pause");$("vinyl").setAttribute("aria-label","Pause")});
+audio.addEventListener("pause",()=>{player.classList.remove("playing");$("pi").innerHTML=PLAY;$("play").setAttribute("aria-label","Play");$("vinyl").setAttribute("aria-label","Play")});
+audio.addEventListener("loadedmetadata",()=>{$("dur").textContent=fmt(audio.duration)});
+audio.addEventListener("timeupdate",()=>{$("cur").textContent=fmt(audio.currentTime);if(audio.duration)$("seek").value=audio.currentTime/audio.duration*1000});
+audio.addEventListener("ended",()=>load(idx+1,true));
+$("seek").addEventListener("input",e=>{if(audio.duration)audio.currentTime=e.target.value/1000*audio.duration});
+setLabel(null);
+</script>
+</body>
+</html>
