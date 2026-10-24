@@ -278,8 +278,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <div class="deck">
         <div class="sleeve" aria-hidden="true"><div class="s-title">Paolos<br>TK</div><div class="s-sub">Roots · Reggae · Habesha soul</div></div>
         <div class="vinyl-wrap">
-          <button class="vinyl spin paused" id="vinyl" type="button" aria-label="Play the record">
-            <span class="label"><img src="img/paolos-bio.jpg" alt=""></span>
+          <button class="vinyl spin paused" id="vinyl" type="button" aria-label="Play Bella">
+            <span class="label"><img src="img/bella-cover.jpg" alt=""></span>
           </button>
         </div>
       </div>
@@ -401,7 +401,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
 <div class="np" aria-label="Now playing">
   <div class="wrap">
-    <div class="mini" aria-hidden="true"><img src="img/paolos-bio.jpg" alt=""></div>
+    <div class="mini" aria-hidden="true"><img src="img/bella-cover.jpg" alt=""></div>
     <div class="meta"><div class="t" id="npT">Paolos TK</div><div class="s" id="npS">Press play to start</div></div>
     <div class="ctrls">
       <button class="cb" id="prev" type="button" aria-label="Previous song"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
@@ -416,9 +416,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <script>
 /* Song list, in play order. */
 const TRACKS = [
+  { title: "One For Me",           len: "1:30", src: "music/track09.mp3", album: "Bella · with Al Pancho (2016)" },
+  { title: "Bella",                len: "1:30", src: "music/track02.mp3", album: "Bella · with Al Pancho (2016)" },
   { title: "Liberty",              len: "1:30", src: "music/track01.mp3" },
-  { title: "Bella",                len: "1:30", src: "music/track02.mp3" },
-  { title: "One For Me",           len: "1:30", src: "music/track09.mp3" },
   { title: "Wounded Bear",         len: "1:30", src: "music/track03.mp3" },
   { title: "System of Corruption", len: "1:30", src: "music/track04.mp3" },
   { title: "Guarda",               len: "1:30", src: "music/track05.mp3" },
@@ -455,7 +455,7 @@ function load(i,play){
   idx=(i+TRACKS.length)%TRACKS.length;
   audio.src=TRACKS[idx].src;
   $("npT").textContent=TRACKS[idx].title;
-  $("npS").textContent="Paolos TK · "+(idx<5?"Side A":"Side B");
+  $("npS").textContent=TRACKS[idx].album||("Paolos TK · "+(idx<5?"Side A":"Side B"));
   btns.forEach((b,j)=>b.setAttribute("aria-current",j===idx));
   if(play){ initAudioGraph(); audio.play().catch(()=>{}); }
 }
