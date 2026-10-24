@@ -9,12 +9,17 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#170b08">
+<title>Paolos TK · Roots Reggae · Eugene, Oregon</title>
+<meta name="description" content="Paolos TK: roots reggae with Ethiopian and Eritrean soul, from Eugene, Oregon.">
+<meta property="og:title" content="Paolos TK · Roots Reggae">
+<meta property="og:description" content="Roots reggae with Ethiopian and Eritrean soul. Founding member of Zionsoundz with Miguel Migs. Opened for Burning Spear, Buju Banton, Sizzla, Culture and more.">
+<meta property="og:image" content="https://www.paolostk.com/img/paolos-bio.jpg">
+<meta property="og:url" content="https://www.paolostk.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
 </head>
 <body>
-<title>Paolos TK</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Paolos TK: roots reggae with Ethiopian and Eritrean soul, from Eugene, Oregon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Figtree:wght@400;500;600;700&family=Noto+Serif+Ethiopic:wght@600&display=swap" rel="stylesheet">
@@ -155,6 +160,13 @@ a.rec:hover{border-color:var(--gold)}
 .story figure:has(.bio-photo){justify-self:center}
 figcaption{font-size:13px;color:var(--muted);margin-top:10px}
 @media (max-width:900px){.story .wrap{grid-template-columns:1fr}}
+.migs{border:2px solid var(--gold);border-radius:14px;padding:20px 22px;background:var(--surface);display:grid;gap:8px;box-shadow:8px 8px 0 var(--green)}
+.migs .k{font:700 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.migs .h{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,4vw,44px);line-height:.92}
+.migs .h span{color:var(--gold)}
+.migs p{color:var(--muted);font-size:16px}
+.hero .cred{margin-top:14px;font-weight:700;font-size:15px;color:var(--fg)}
+.hero .cred b{color:var(--gold)}
 
 /* discography: a left-to-right timeline */
 .disco{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--gold)}
@@ -178,6 +190,22 @@ figcaption{font-size:13px;color:var(--muted);margin-top:10px}
 .photos figure{margin:0;min-width:0}
 .photos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;display:block;max-width:100%}
 .photos strong{display:block;color:var(--fg);font-size:15px}
+.legend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.legend-grid figure{margin:0;min-width:0}
+.legend-grid img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;display:block;border:3px solid var(--gold)}
+.legend-grid .with img{border:3px solid var(--gold)}
+.legend-grid figcaption{font-size:12px;margin-top:8px}
+.legend-grid strong{display:block;color:var(--fg);font-size:14px}
+.legend-grid .bill{aspect-ratio:4/5;align-content:end}
+.legends{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start}
+.legends .zig{margin:0}
+.legends .zig img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;display:block}
+.legends .zig strong{display:block;color:var(--fg);font-size:14px}
+.billgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;align-content:start}
+.bill{border-radius:8px;background:var(--surface);border:1px solid var(--line);border-bottom:4px solid var(--gold);padding:14px 16px;display:grid;gap:6px}
+.bill .k{font:700 10px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.bill .n{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:22px;line-height:.95;color:var(--fg);overflow-wrap:anywhere}
+@media (max-width:600px){.legends{grid-template-columns:1fr}.legends .zig{max-width:260px}}
 @media (max-width:860px){.photos{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.photos{grid-template-columns:1fr}}
 
@@ -229,7 +257,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top">Paolos TK <span lang="ti">ጳውሎስ</span></a>
-    <nav aria-label="Sections"><a href="#music">Music</a><a href="#story">Story</a><a href="#releases">Releases</a><a href="#stage">Stage</a><a href="#booking">Booking</a></nav>
+    <nav aria-label="Sections"><a href="#music">Music</a><a href="#story">Story</a><a href="#releases">Releases</a><a href="#stage">Stage</a><a href="#scene">2026</a><a href="#booking">Booking</a></nav>
   </div>
 </header>
 
@@ -241,6 +269,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <h1 style="margin-top:16px">Paolos <span class="tk">TK</span></h1>
         <div class="geez" lang="ti">ፍቕሪ · ሓርነት · ተስፋ</div>
         <p class="lede">Roots reggae with Ethiopian and Eritrean soul. Songs of love, liberty and hope.</p>
+        <p class="cred">Founding member of <b>Zionsoundz</b> with <b>Miguel Migs</b> · Distributed by <b>VP Records</b> · Opened for Burning Spear, Buju Banton &amp; Sizzla</p>
         <div class="cta">
           <button class="btn solid" id="heroPlay" type="button"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>Play the music</button>
           <a class="btn ghost" href="#booking">Book a show</a>
@@ -261,7 +290,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="wrap">
       <span class="live"><i aria-hidden="true"></i>In the studio now</span>
       <h2>New reggae album <span>coming</span></h2>
-      <p>Paolos TK is in the studio on a brand-new reggae album with some big names in the industry. Be on the lookout.</p>
+      <p>Paolos TK is in the studio on a brand-new roots reggae album. Be the first to hear it.</p>
       <a class="btn" href="https://docs.google.com/forms/d/1eldClI0s8yGDEWjvwZnuf0gezdd4TURznubzaSD3KFI/viewform" target="_blank" rel="noopener">Hear it first: join the list &rarr;</a>
     </div>
   </section>
@@ -270,7 +299,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
   <section class="sound" id="music">
     <div class="wrap">
-      <div class="sec-head"><div><div class="eyebrow">Sound system</div><h2 style="margin-top:10px">Drop the needle</h2></div></div>
+      <div class="sec-head"><div><div class="eyebrow">Sound system</div><h2 style="margin-top:10px">Drop the needle</h2></div><p style="color:var(--muted);font-size:14px;max-width:34ch">90-second previews. Full songs on <a href="https://open.spotify.com/track/67mXDls9kTYTomc8NEEhe0" target="_blank" rel="noopener">Spotify</a> and <a href="https://paolostk.bandcamp.com/album/wounded-bear" target="_blank" rel="noopener">Bandcamp</a>.</p></div>
       <canvas class="viz" id="viz" aria-hidden="true"></canvas>
       <div class="sides">
         <div class="side"><h3>Side A <small>Tracks 1–5</small></h3><ol id="sideA"></ol></div>
@@ -279,8 +308,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <div class="crate">
         <h3>More from the crate</h3>
         <div class="crate-grid">
-          <a class="rec" href="https://open.spotify.com/artist/0iLUO2jPGk1HD2Xoz4Sy5S" target="_blank" rel="noopener"><span class="disc" style="--c:var(--green)" aria-hidden="true"></span><span><span class="yr">2016 · SINGLE</span><span class="ti" style="display:block">"Bella" ft. Al Pancho</span><span class="go" style="display:block">Play on Spotify &rarr;</span></span></a>
-          <a class="rec" href="https://soundcloud.com/zionsoundz" target="_blank" rel="noopener"><span class="disc" style="--c:var(--red)" aria-hidden="true"></span><span><span class="yr">1993 · BAND ALBUM</span><span class="ti" style="display:block">Zionsoundz</span><span class="go" style="display:block">Top track: "Babylon by the River" &rarr;</span></span></a>
+          <a class="rec" href="https://open.spotify.com/track/67mXDls9kTYTomc8NEEhe0" target="_blank" rel="noopener"><img src="img/bella-cover.jpg" alt="Bella cover art" width="72" height="72" style="width:72px;height:72px;border-radius:6px;border:2px solid var(--gold);object-fit:cover"><span><span class="yr">2016 · ZION SOUNDZ / VP</span><span class="ti" style="display:block">Bella</span><span class="go" style="display:block;color:var(--muted);font-weight:600">Bella · One for Me · Big Ganja Spliff</span><span class="go" style="display:block">Play on Spotify &rarr;</span></span></a>
+          <a class="rec" href="https://soundcloud.com/zionsoundz" target="_blank" rel="noopener"><img src="img/zionsoundz-logo.jpg" alt="Zionsoundz logo" width="72" height="72" style="width:72px;height:72px;border-radius:6px;border:2px solid var(--gold);object-fit:cover"><span><span class="yr">1993 · BAND ALBUM</span><span class="ti" style="display:block">Zionsoundz</span><span class="go" style="display:block">Top track: "Babylon by the River" &rarr;</span></span></a>
           <div class="rec soon"><span class="disc" style="--c:var(--gold)" aria-hidden="true"></span><span><span class="yr">1999 · SOLO ALBUM</span><span class="ti" style="display:block">Liberty</span><span class="go" style="display:block">Coming soon</span></span></div>
         </div>
       </div>
@@ -294,7 +323,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <h2 style="font-size:clamp(52px,8vw,96px)">From refuge to riddim</h2>
         <p class="big">Paolos TK blends the rhythms of Ethiopia and Eritrea with the heart of Jamaican reggae. His journey, from seeking refuge to building a new life in America, runs through every song.</p>
         <p>He released his debut album, <em>Contagious Love</em>, in 1991. In the early '90s he was a founding member of Zionsoundz in Santa Cruz, California, alongside Miguel Migs, who went on to become an internationally known house music producer and DJ. The band recorded its album in 1993.</p>
-        <p>Solo albums <em>Liberty</em> (1999) and <em>Wounded Bear</em> (2004) followed, along with the 2016 single "Bella" featuring Al Pancho. Now based in Eugene, Oregon, Paolos TK is bringing new music, international collaborations and live shows to a new generation of roots fans.</p>
+        <div class="migs"><img src="img/zionsoundz-logo.jpg" alt="Zionsoundz Reggae Music logo" width="120" height="120" style="width:120px;height:120px;border-radius:8px;border:3px solid var(--gold)"><div class="k">Santa Cruz · early '90s</div><div class="h">Zionsoundz <span>×</span> Miguel Migs</div><p>Before he became one of house music's best-known producers and DJs, Miguel Migs played alongside Paolos TK in the roots reggae band Zionsoundz. Hear the band's top track, <a href="https://soundcloud.com/zionsoundz" target="_blank" rel="noopener">"Babylon by the River"</a>.</p></div>
+        <p>His band over the years has included bassist <strong>Henry Sarmiento</strong>, who went on to found <a href="https://www.sonicvistastudios.com/profiles/l-henry-sarmiento" target="_blank" rel="noopener">Sonic Vista Studios</a> in Ibiza, Spain, and has engineered for artists including David Guetta and Lady Gaga.</p>
+        <p>Solo albums <em>Liberty</em> (1999) and <em>Wounded Bear</em> (2004) followed, along with <em>Bella</em> (2016), three songs with Al Pancho, "Bella," "One for Me" and "Big Ganja Spliff" featuring Ras Elias, released on Zion Soundz Records and distributed by <strong>VP Records</strong> (VPAL), one of the world's leading reggae labels. Now based in Eugene, Oregon, Paolos TK is bringing new music, international collaborations and live shows to a new generation of roots fans.</p>
       </div>
       <figure>
         <img class="bio-photo" src="img/paolos-bio.jpg" alt="Paolos TK smiling in a white cap" width="480" height="628" loading="lazy">
@@ -310,25 +341,38 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <div class="sec-head"><div><div class="eyebrow">Discography</div><h2 style="margin-top:10px">Releases</h2></div></div>
       <div class="disco">
         <div class="rel"><div class="y">1991</div><div class="n">Contagious Love</div><div class="m">Debut solo album · coming online soon</div></div>
-        <div class="rel"><div class="y">1993</div><div class="n">Zionsoundz</div><div class="m">Band album with Miguel Migs · <a href="https://soundcloud.com/zionsoundz" target="_blank" rel="noopener">SoundCloud</a></div></div>
+        <div class="rel"><div class="y">1993</div><div class="n">Zionsoundz</div><div class="m">Band album · with <strong style="color:var(--fg)">Miguel Migs</strong> · <a href="https://soundcloud.com/zionsoundz" target="_blank" rel="noopener">SoundCloud</a></div></div>
         <div class="rel"><div class="y">1999</div><div class="n">Liberty</div><div class="m">Solo album · coming online soon</div></div>
-        <div class="rel"><div class="y">2004</div><div class="n">Wounded Bear</div><div class="m">Solo album, 10 tracks · <a href="https://paolostk.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a></div></div>
-        <div class="rel"><div class="y">2016</div><div class="n">"Bella" ft. Al Pancho</div><div class="m">Single · <a href="https://open.spotify.com/artist/0iLUO2jPGk1HD2Xoz4Sy5S" target="_blank" rel="noopener">Spotify</a></div></div>
+        <div class="rel"><div class="y">2004</div><div class="n">Wounded Bear</div><div class="m">Solo album, 10 tracks · <a href="https://paolostk.bandcamp.com/album/wounded-bear" target="_blank" rel="noopener">Bandcamp</a></div></div>
+        <div class="rel"><div class="y">2016</div><div class="n">Bella</div><div class="m">3 songs with Al Pancho · Zion Soundz Records, distributed by VP Records (VPAL): "Bella," "One for Me," "Big Ganja Spliff" (ft. Ras Elias) · <a href="https://open.spotify.com/track/67mXDls9kTYTomc8NEEhe0" target="_blank" rel="noopener">Spotify</a></div></div>
       </div>
     </div>
   </section>
 
   <section id="stage" style="padding-top:20px">
-    <div class="marquee" aria-label="Opened for: Burning Spear, Buju Banton, Sizzla, Ziggy Marley, Julian Marley, Joe Higgs, The Abyssinians">
+    <div class="marquee" aria-label="Opened for: Burning Spear, Buju Banton, Sizzla, Ziggy Marley, Julian Marley, Culture, Joe Higgs, The Abyssinians">
       <div class="row" aria-hidden="true">
-        <span>Burning Spear</span><span>Buju Banton</span><span>Sizzla</span><span>Ziggy Marley</span><span>Julian Marley</span><span>Joe Higgs</span><span>The Abyssinians</span>
-        <span>Burning Spear</span><span>Buju Banton</span><span>Sizzla</span><span>Ziggy Marley</span><span>Julian Marley</span><span>Joe Higgs</span><span>The Abyssinians</span>
+        <span>Burning Spear</span><span>Buju Banton</span><span>Sizzla</span><span>Ziggy Marley</span><span>Julian Marley</span><span>Culture</span><span>Joe Higgs</span><span>The Abyssinians</span>
+        <span>Burning Spear</span><span>Buju Banton</span><span>Sizzla</span><span>Ziggy Marley</span><span>Julian Marley</span><span>Culture</span><span>Joe Higgs</span><span>The Abyssinians</span>
       </div>
     </div>
     <div class="wrap">
       <div class="sec-head"><div><div class="eyebrow">Shared the stage</div><h2 style="margin-top:10px">With the legends</h2></div></div>
-      <div class="photos">
-        <figure><img src="img/ziggy.jpg" alt="Paolos TK in a white headwrap beside Ziggy Marley in a white knit cap" loading="lazy" style="object-position:50% 40%"><figcaption><strong>Ziggy Marley</strong>Paolos opened for Ziggy in Santa Cruz, 1994</figcaption></figure>
+      <div class="legend-grid">
+        <figure class="with"><img src="img/ziggy.jpg" alt="Paolos TK with Ziggy Marley" loading="lazy"><figcaption><strong>Ziggy Marley</strong>Paolos opened for Ziggy in Santa Cruz, 1994</figcaption></figure>
+        <figure><img src="img/spear.jpg" alt="Burning Spear" loading="lazy"><figcaption><strong>Burning Spear</strong>Opened for</figcaption></figure>
+        <figure><img src="img/buju.jpg" alt="Buju Banton" loading="lazy"><figcaption><strong>Buju Banton</strong>Opened for</figcaption></figure>
+        <figure><img src="img/sizzla.jpg" alt="Sizzla" loading="lazy"><figcaption><strong>Sizzla</strong>Opened for</figcaption></figure>
+        <figure><img src="img/julian.jpg" alt="Julian Marley" loading="lazy"><figcaption><strong>Julian Marley</strong>Opened for</figcaption></figure>
+        <figure><img src="img/abyssinians.jpg" alt="The Abyssinians" loading="lazy"><figcaption><strong>The Abyssinians</strong>Opened for</figcaption></figure>
+        <figure><img src="img/culture.jpg" alt="Culture" loading="lazy"><figcaption><strong>Culture</strong>Opened for</figcaption></figure>
+      </div>
+    </div>
+  </section>
+  <section id="scene" style="padding-top:20px">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="eyebrow">Out in the scene · 2026</div><h2 style="margin-top:10px">On the road now</h2></div></div>
+      <div class="legend-grid">
         <figure><img src="img/alborosie.jpg" alt="Paolos TK and Alborosie giving thumbs up backstage" loading="lazy"><figcaption><strong>Alborosie</strong>Backstage at The Get Down, Portland · Oct 20, 2026</figcaption></figure>
         <figure><img src="img/hinds.jpg" alt="Paolos TK smiling in a selfie with David Hinds of Steel Pulse" loading="lazy"><figcaption><strong>David Hinds, Steel Pulse</strong>McDonald Theatre, Eugene · Oct 8, 2026</figcaption></figure>
       </div>
@@ -341,19 +385,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <div class="eyebrow">Booking</div>
         <h2 style="margin-top:12px">Bring the roots to your stage</h2>
         <p class="sub">Available for festivals, support slots and tours. Based in Eugene, Oregon.</p>
-        <a class="btn" style="margin-top:22px;background:var(--gold-ink);color:var(--gold);border-color:var(--gold-ink)" href="https://docs.google.com/forms/d/1eldClI0s8yGDEWjvwZnuf0gezdd4TURznubzaSD3KFI/viewform" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zm2 2v.5l7 4.5 7-4.5V7zm14 2.9-7 4.5-7-4.5V17h14z"/></svg>Join the list for new music</a>
-        <div class="social" aria-label="Follow"><a href="https://www.facebook.com/evcnews" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9H17l.5-4h-4V8.8c0-.5.3-.8.5-.8z"/></svg>Facebook</a><a href="https://www.instagram.com/evcnews" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3zm5 3.5A4.5 4.5 0 1112 16.5 4.5 4.5 0 0112 7.5zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.5 5.8a1 1 0 110 2 1 1 0 010-2z"/></svg>Instagram</a></div>
+        <a class="btn" style="margin-top:22px;background:var(--gold-ink);color:var(--gold);border-color:var(--gold-ink)" target="_blank" rel="noopener" href="mailto:paolostk@gmail.com?subject=Booking%20inquiry%20%E2%80%93%20Paolos%20TK&body=Event%20%2F%20venue%3A%0ACity%3A%0ADate(s)%3A%0ASet%20length%3A%0ABudget%20%2F%20offer%3A%0AContact%20phone%3A%0A"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zm2 2v.5l7 4.5 7-4.5V7zm14 2.9-7 4.5-7-4.5V17h14z"/></svg>Send a booking inquiry</a>
+        <div class="social" aria-label="Listen"><a href="https://open.spotify.com/track/67mXDls9kTYTomc8NEEhe0" target="_blank" rel="noopener">Spotify</a><a href="https://paolostk.bandcamp.com/album/wounded-bear" target="_blank" rel="noopener">Bandcamp</a><a href="https://docs.google.com/forms/d/1eldClI0s8yGDEWjvwZnuf0gezdd4TURznubzaSD3KFI/viewform" target="_blank" rel="noopener">Join the fan list</a></div>
       </div>
       <div class="cards">
         <div class="cardc"><div style="min-width:0"><div class="k">Email</div><div class="v" id="em">paolostk@gmail.com</div></div><button class="copy" type="button" data-copy="em">Copy</button></div>
         <div class="cardc"><div style="min-width:0"><div class="k">Phone</div><div class="v" id="ph">(408) 770-6967</div></div><button class="copy" type="button" data-copy="ph">Copy</button></div>
-        <div class="epk"><div style="min-width:0"><div class="k">Press kit · PDF · 2 pages</div><div class="v">Electronic Press Kit</div><div class="epk-msg" id="epkMsg" aria-live="polite"></div></div><a class="dl" id="epkBtn" href="paolostk_EPK.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M11 3h2v10l3.5-3.5 1.4 1.4L12 16.8 6.1 10.9l1.4-1.4L11 13zM5 19h14v2H5z"/></svg>Download EPK</a></div>
+        <div class="epk"><div style="min-width:0"><div class="k">Press kit · PDF · 2 pages</div><div class="v">Electronic Press Kit</div><div class="epk-msg" id="epkMsg" aria-live="polite"></div></div><a class="dl" id="epkBtn" href="paolostk_EPK.pdf" download="Paolos_TK_EPK.pdf"><svg viewBox="0 0 24 24"><path d="M11 3h2v10l3.5-3.5 1.4 1.4L12 16.8 6.1 10.9l1.4-1.4L11 13zM5 19h14v2H5z"/></svg>Download EPK</a></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer><div class="wrap"><span>© Paolos TK · Eugene, Oregon</span><span class="social"><a href="https://www.facebook.com/evcnews" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/evcnews" target="_blank" rel="noopener">Instagram</a><a href="https://open.spotify.com/artist/0iLUO2jPGk1HD2Xoz4Sy5S" target="_blank" rel="noopener">Spotify</a><a href="https://paolostk.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a></span><span lang="ti" style="font-family:var(--geez)">ፍቕሪ · ሓርነት · ተስፋ</span></div></footer>
+<footer><div class="wrap"><span>© Paolos TK · Eugene, Oregon</span><span class="social"><a href="https://open.spotify.com/track/67mXDls9kTYTomc8NEEhe0" target="_blank" rel="noopener">Spotify</a><a href="https://paolostk.bandcamp.com/album/wounded-bear" target="_blank" rel="noopener">Bandcamp</a></span><span lang="ti" style="font-family:var(--geez)">ፍቕሪ · ሓርነት · ተስፋ</span></div></footer>
 
 <div class="np" aria-label="Now playing">
   <div class="wrap">
@@ -367,21 +411,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="prog"><span id="cur">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span id="dur">0:00</span></div>
   </div>
 </div>
-<audio id="audio" preload="metadata"></audio>
+<audio id="audio" preload="metadata" controlslist="nodownload"></audio>
 
 <script>
 /* Song list, in play order. */
 const TRACKS = [
-  { title: "Liberty",              len: "5:08", src: "music/track01.mp3" },
-  { title: "Bella",                len: "4:52", src: "music/track02.mp3" },
-  { title: "One For Me",           len: "4:47", src: "music/track09.mp3" },
-  { title: "Wounded Bear",         len: "4:13", src: "music/track03.mp3" },
-  { title: "System of Corruption", len: "4:17", src: "music/track04.mp3" },
-  { title: "Guarda",               len: "4:56", src: "music/track05.mp3" },
-  { title: "Color Line",           len: "4:50", src: "music/track06.mp3" },
-  { title: "Abrhelley",            len: "4:32", src: "music/track07.mp3" },
-  { title: "Here I Am",            len: "4:44", src: "music/track08.mp3" },
-  { title: "Holy",                 len: "4:43", src: "music/track10.mp3" },
+  { title: "Liberty",              len: "1:30", src: "music/track01.mp3" },
+  { title: "Bella",                len: "1:30", src: "music/track02.mp3" },
+  { title: "One For Me",           len: "1:30", src: "music/track09.mp3" },
+  { title: "Wounded Bear",         len: "1:30", src: "music/track03.mp3" },
+  { title: "System of Corruption", len: "1:30", src: "music/track04.mp3" },
+  { title: "Guarda",               len: "1:30", src: "music/track05.mp3" },
+  { title: "Color Line",           len: "1:30", src: "music/track06.mp3" },
+  { title: "Abrhelley",            len: "1:30", src: "music/track07.mp3" },
+  { title: "Here I Am",            len: "1:30", src: "music/track08.mp3" },
+  { title: "Holy",                 len: "1:30", src: "music/track10.mp3" },
 ];
 const $ = id => document.getElementById(id);
 const audio = $("audio"), vinyl = $("vinyl");
@@ -447,9 +491,10 @@ function draw(){
 }
 draw();
 
-/* EPK download: uses the viewer's save prompt when available, otherwise the link opens the PDF */
+
+/* EPK: in the Claude preview, use the viewer's save prompt; on a normal website the link just downloads the PDF */
 (async()=>{
-  const dl = window.claude?.use ? await window.claude.use("downloads") : null;
+  const dl = window.claude?.use ? await window.claude.use("downloads").catch(()=>null) : null;
   if(!dl) return;
   const btn=$("epkBtn"), msg=$("epkMsg");
   btn.addEventListener("click", async e=>{
@@ -458,14 +503,9 @@ draw();
       const r=await fetch("paolostk_EPK.pdf"); if(!r.ok) throw new Error("fetch");
       await dl.save({filename:"Paolos_TK_EPK.pdf", data: await r.blob()});
       msg.textContent="Saved.";
-    }catch(err){
-      if(err && err.code==="declined") return;
-      msg.textContent="Couldn't save here. Opening the PDF instead.";
-      window.open("paolostk_EPK.pdf","_blank","noopener");
-    }
+    }catch(err){ if(err && err.code==="declined") return; msg.textContent="Couldn't save here. Email paolostk@gmail.com for the EPK."; }
   });
 })();
-
 document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",()=>{
   const el=$(b.dataset.copy), txt=el.textContent;
   const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected";setTimeout(()=>b.textContent="Copy",1500)};
